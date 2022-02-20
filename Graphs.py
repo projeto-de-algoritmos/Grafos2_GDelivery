@@ -2,91 +2,78 @@ from collections import defaultdict
 
 def init_graph():
 # RED nodes
-    graph = {'0': ['1'],
-            '1': ['0', '2', '7'],
-            '2': ['1', '3', '4', '6'],
-            '3': ['2', '4', '5', '22'],
-            '4': ['3', '2'],
-            '5': ['3','6', '12', '21'],
-            '6': ['2', '5', '7'],
-            '7': ['1', '8'],
-            '8': ['7', '9', '14', '13'],
-            '9': ['8', '10', '15'],
-            '10': ['6', '9', '11', '16'],
-            '11': ['10', '10', '17', '18'],
-            '12': ['5', '11', '19', '20'],
+    graph = {'0': {'1' : 10},
+            '1': {'0' : 10, '2' : 20},
+            '2': {'1' : 20, '3' : 40, '4': 50, '6':60},
+            '3': {'2' : 40, '4' : 70, '5': 80},
+            '4': {'3' : 70, '2' : 50},
+            '5': {'3' : 80, '6' : 100},
+            '6': {'2' : 60, '5' : 100}
+            # '7': {'1', '8'},
+            # '8': {'7', '9'},
+            # '9': {'8', '10'},
+            # '10': {'6', '9', '11'},
+            # '11': {'10', '10'},
+            # '12': {'5', '11'}
+    }
 
-# GREEN nodes
-            '13': ['8'],
-            '14': ['8'],
-            '15': ['9'],
-            '16': ['10'],
-            '17': ['11'],
-            '18': ['11'],
-            '19': ['12'],
-            '20': ['12'],
-            '21': ['5'],
-            '22': ['3']}
+# # GREEN nodes
+#             '13': ['8'],
+#             '14': ['8'],
+#             '15': ['9'],
+#             '16': ['10'],
+#             '17': ['11'],
+#             '18': ['11'],
+#             '19': ['12'],
+#             '20': ['12'],
+#             '21': ['5'],
+#             '22': ['3']}
             
     return graph
 
+def dijkstra(graph, origem):
 
-def BFS(graph, posInicio): 
-    print("-----BFS-----")
+    atual_node = {}; path = {}; controller = {}
+    unvisiteds = []
+    atual_node[origem] = 0
+    atual = '0'
 
-    visited = [False] * (len(graph)) 
-    lista = [] 
-    lista.append(posInicio) 
-    visited[posInicio] = True
+    
+    for nodes in graph:
+        unvisiteds.append(nodes)    
+        path[nodes] = 999999 
 
-    while lista: 
+    path[atual] =0
+    unvisiteds.remove(atual)
+    #print(f'{atual} visitado')
 
-        posInicio = lista.pop(0) 
-        print(f'{posInicio}  ->', end='  ') 
+    while unvisiteds:
+        for previous, distance in graph[atual].items():
+             peso = distance + atual_node[atual]
+             #print(f'Peso aresta {atual} = {peso}')
 
-        for i in graph[posInicio]: 
-            if visited[i] == False: 
-                lista.append(i) 
-                visited[i] = True
-    print("Done!")
-    return
+             if path[previous] == 999999 or path[previous] > peso:
+                 path[previous] = peso
+                 controller[previous] = path[previous]
+       
 
+        min_node = min(controller.items(), key=lambda x: x[1])
+        #print(f'Menor nó vizinho: {min_node}')
 
-def BFS_short_path(graph, end):
-	visited = []	
-	queue = [['0']]
-	var_break = 0
-	goal = []
+        atual=min_node[0]; atual_node[atual] = min_node[1]
+        
+        unvisiteds.remove(atual)
+        #print(f'{atual} visitado')
+        del controller[atual]
 
-	while queue:
-		if(var_break == -1):
-			break
+    print('Node   Menor_distancia\n----------------')
+    for nodes in path:
+        print(f' {nodes}  ->   {path[nodes]}')
 
-		path = queue.pop(0)
-		node = path[-1]
-		#print(f'pop - > {path}', end='   ')
-		
-		if node not in visited:
-			near_edges = graph[node]
-			
-			for edge in near_edges:
-				new_path = list(path)
-				new_path.append(edge)
-				queue.append(new_path)
-				
-				if edge == end:
-					print("Menor caminho = ", *new_path)
-					goal = new_path
-					var_break = -1
-                    
-			visited.append(node)
+    print('----------------')
 
-	return goal
-
-
-# if __name__ == "__main__":
+if __name__ == "__main__":
 	
-#     graph = init_graph()
+    graph = init_graph()
+    dijkstra(graph, '0')
 
-
-#     BFS_short_path(graph, '16')
