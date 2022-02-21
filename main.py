@@ -75,7 +75,11 @@ def show_small_path():
     text.insert(END, 'Menor Caminho:\n')
 
     for day in path:
-        text.insert(END, day + '\n')
+        if int(day) < 50 :
+            text.insert(END, day + '\n')
+        else:
+            dis = float(day)/100
+            text.insert(END,'Distância:' + str(dis) + ' Km\n')
 
     # MyLabel = Label(root, text="Menor Caminho encontrado:  " + str(path),padx=30,pady=5,fg='snow',bg='black')
     # MyLabel.place(relx=0.5,rely=0.9,anchor=CENTER)
