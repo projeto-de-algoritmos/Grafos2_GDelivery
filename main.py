@@ -64,7 +64,7 @@ def show_small_path():
     #print(goal)
     
     graph = init_graph()
-    path = BFS_short_path(graph, goal)
+    path = dijkstra(graph, goal)
     #print(path)
 
     button_back = Button(root,text='Back',padx=30,pady=5,fg='snow',bg='black',command=back)
