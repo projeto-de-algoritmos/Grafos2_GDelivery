@@ -13,7 +13,7 @@ root.iconbitmap('assets/delivey.ico')
 imag_1 = PhotoImage(file= "assets/backgroundDelivery.png")
 imag_2 = PhotoImage(file = "assets/Va_va_land_city.png")
 imag_3 = PhotoImage(file = "assets/va_va_land_city.png")
-imag_4 = PhotoImage(file = "assets/Va_va_land_city_nodes.png")
+imag_4 = PhotoImage(file = "assets/Va_va_land_nodes_km.png")
 
 imageList = [imag_1, imag_2, imag_3, imag_4]
 

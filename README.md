@@ -2,8 +2,8 @@
 
 # GDelivery
 
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: Grafos 1<br>
+**Número da Lista**: 18<br>
+**Conteúdo da Disciplina**: Grafos 2<br>
 
 ## Alunos
 |Matrícula | Aluno |
@@ -12,7 +12,7 @@
 | 18/0103431  |  João Victor Valadão |
 
 ## Sobre 
-O nosso projeto é chamado de GDelivery, onde o objetivo é achar o melhor e mais curto caminho para sua entrega, usando grafos BFS para encontrar esse caminho. Com a utilização de interfaces gráficas feitas no TKinter uma biblioteca padrão python para a fácil visualização desses caminhos.
+O nosso projeto é chamado de GDelivery, onde o objetivo é achar o melhor e mais curto caminho para sua entrega, usando grafos com o algorítmo de Dijkstra para encontrar esse caminho. Com a utilização de interfaces gráficas feitas no TKinter uma biblioteca padrão python para a fácil visualização desses caminhos.
 
 ## Screenshots
 
@@ -24,7 +24,7 @@ O nosso projeto é chamado de GDelivery, onde o objetivo é achar o melhor e mai
 ![Mapa](assets/visualizarMapa.png)
 <figcaption>Figura 2: Tela visualizar mapa</figcaption>
 
-![Mapa](assets/menorRota.png)
+![Mapa](assets/Va_va_land_nodes_km.png)
 <figcaption>Figura 3: Tela do caminho</figcaption>
 
 </center>
