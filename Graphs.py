@@ -31,34 +31,35 @@ def init_graph():
             
     return graph
 
-def dijkstra(graph, origem):
+def dijkstra(graph, search):
 
     atual_node = {}; path = {}; controller = {}
     unvisiteds = []
-    atual_node[origem] = 0
+    atual_node['0'] = 0
     atual = '0'
 
     
     for nodes in graph:
         unvisiteds.append(nodes)    
         path[nodes] = 999999 
+    
+    path[atual] = [0,'0']
 
-    path[atual] =0
     unvisiteds.remove(atual)
     #print(f'{atual} visitado')
 
     while unvisiteds:
         for previous, distance in graph[atual].items():
+             print(atual_node)
              peso = distance + atual_node[atual]
              #print(f'Peso aresta {atual} = {peso}')
 
-             if path[previous] == 999999 or path[previous] > peso:
-                 path[previous] = peso
-                 controller[previous] = path[previous]
+             if path[previous] == 999999 or path[previous][0] > peso:
+                 path[previous] = [peso, atual]
+                 controller[previous] = peso
        
-
         min_node = min(controller.items(), key=lambda x: x[1])
-        #print(f'Menor nó vizinho: {min_node}')
+        #print(f'Menor nó vizinho: {min_node[1]}')
 
         atual=min_node[0]; atual_node[atual] = min_node[1]
         
@@ -68,12 +69,26 @@ def dijkstra(graph, origem):
 
     print('Node   Menor_distancia\n----------------')
     for nodes in path:
-        print(f' {nodes}  ->   {path[nodes]}')
+        print(f' {nodes}  ->   {path[nodes][0]}')
 
     print('----------------')
+
+    small_path = [search]
+    x = search
+
+    for names in path:
+        if x == '0': break
+
+        x = path[x][1]
+        small_path.append(x)
+    
+    print(small_path[::-1])
+
+    return small_path[::-1]
+
 
 if __name__ == "__main__":
 	
     graph = init_graph()
-    dijkstra(graph, '0')
+    brabissimo = dijkstra(graph, '6')
 
