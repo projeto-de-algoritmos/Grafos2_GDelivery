@@ -14,6 +14,13 @@
 ## Sobre 
 O nosso projeto é chamado de GDelivery, onde o objetivo é achar o melhor e mais curto caminho para sua entrega, usando grafos com o algorítmo de Dijkstra para encontrar esse caminho. Com a utilização de interfaces gráficas feitas no TKinter uma biblioteca padrão python para a fácil visualização desses caminhos.
 
+## Apresentação
+
+Segue o link para a apresentação dessa segunda entrega:
+
+[![Vídeo do projeto](https://img.youtube.com/vi/V98-hE-wLLE/0.jpg)](https://www.youtube.com/watch?v=ropHJGIhRlQ)
+
+
 ## Screenshots
 
 <center>
